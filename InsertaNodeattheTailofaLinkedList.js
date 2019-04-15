@@ -63,23 +63,39 @@ function printSinglyLinkedList(node, sep, ws) {
  */
 function insertNodeAtTail(head, data) {
 
-    let newNode = new SinglyLinkedList();
-    let node = new SinglyLinkedList();
-    let node2 = new SinglyLinkedList();
+    let newNode = new SinglyLinkedListNode();
     newNode.data = data;
     newNode.next = null;
-    node = head;
-    node2 = head;
-    
-    
-    while (node != null) {
 
-        node=node.next;
+    if (head == null) {
+        newNode.next = null;
+        head = newNode;
     }
-
-    node = newNode;
- 
+    else {
+        let node = head;
+        while (node.next != null) {
+            node = node.next;
+        }
+        node.next = newNode;
+    }
     return head;
 }
 
 function main() {
+    const ws = fs.createWriteStream(process.env.OUTPUT_PATH);
+
+    const llistCount = parseInt(readLine(), 10);
+
+    let llist = new SinglyLinkedList();
+
+    for (let i = 0; i < llistCount; i++) {
+        const llistItem = parseInt(readLine(), 10);
+    	const llist_head = insertNodeAtTail(llist.head, llistItem);
+      	llist.head = llist_head;
+    }
+
+    printSinglyLinkedList(llist.head, '\n', ws);
+    ws.write('\n');
+
+    ws.end();
+}
