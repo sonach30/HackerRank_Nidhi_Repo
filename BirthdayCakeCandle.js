@@ -26,13 +26,19 @@ function readLine() {
 
 // Complete the birthdayCakeCandles function below.
 function birthdayCakeCandles(ar) {
-    var i,len = ar.length,count=1;
-    ar = ar.sort();
-    for (i = len - 2; i >= 0; i--) {
-        if(ar[i]==ar[len-1]) {
+    var i,len = ar.length,count=0,max=-1;
+    for (i = 0; i < len; i++) {
+        if (ar[i] > max) {
+            max = ar[i];
+        }
+    }
+    //for(var i=0)
+    for (i = 0; i <len; i++) {
+        if(ar[i] == max) {
             count++;
         }
     }
+    
     return count;
 }
 
