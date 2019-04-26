@@ -1,7 +1,3 @@
-import java.io.*;
-import java.util.*;
-import java.text.*;
-import java.math.*;
 'use strict';
 
 const fs = require('fs');
